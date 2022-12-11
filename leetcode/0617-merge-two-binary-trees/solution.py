@@ -2,8 +2,8 @@ class Solution:
     def mergeTrees(self, root1, root2):
         """
         DFS
-        RUNTIME: 214 ms
-        MEMORY: 15.5 MB
+        RUNTIME: 214 ms (22.96%)
+        MEMORY: 15.5 MB (49.43%)
         """
         if not root1: return root2
         elif not root2:return root1

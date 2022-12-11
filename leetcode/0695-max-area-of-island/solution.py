@@ -1,8 +1,8 @@
 class Solution:
     """
     DFS
-    RUNTIME: 1773 ms
-    MEMORY: 16.8 MB
+    RUNTIME: 1773 ms (5.1%)
+    MEMORY: 16.8 MB (44.45%)
     """
     def maxAreaOfIsland(self, grid):
         self.visited = []

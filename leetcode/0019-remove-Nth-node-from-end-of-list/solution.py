@@ -1,6 +1,9 @@
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-
+        """
+        RUNTIME: 36 ms (91.7%)
+        MEMORY: 14MB (21.66%)
+        """
         fast = slow = head
         for _ in range(n):
             fast = fast.next
