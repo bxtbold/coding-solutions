@@ -1,7 +1,7 @@
 class Solution {
 public:
     /**
-     * RUNTIME: 30 ms (60.83%)
+     * RUNTIME: 21 ms (77.4%)
      * MEMORY: 11.8 MB (12.93%)
     */
     vector<int> twoSum(vector<int>& nums, int target) {
