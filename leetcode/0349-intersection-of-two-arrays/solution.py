@@ -1,3 +1,19 @@
+class BetterSolution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        """
+        RUNTIME: 49 ms (90.56%)
+        MEMORY: 13.9 MB (91.82%)
+        """
+        hashset = {}
+        unique = []
+        for i in nums1:
+            hashset[i] = 1
+        for j in nums2:
+            if j in hashset.keys() and j not in unique:
+                unique.append(j)
+        return unique
+
+
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
         """

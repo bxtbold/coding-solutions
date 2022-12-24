@@ -1,8 +1,8 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
         """
-        RUNTIME: 68 ms (41.83%)
-        MEMORY: 13.9 MB (15.97%)
+        RUNTIME: 34 ms (93.99%)
+        MEMORY: 13.8 MB (62.35%)
         """
         if n == 1: return True
         hashset = {}
