@@ -1,4 +1,4 @@
-class Solution:
+class BFSSolution:
     def numIslands(self, grid) -> int:
         """
         RUNTIME: 464 ms (66.12%)
@@ -38,10 +38,41 @@ class Solution:
                 self.queue.append([x,y])
 
 
+class DFSSolution:
+    def numIslands(self, grid) -> int:
+        """
+        RUNTIME: 920 ms (30.6%)
+        MEMORY: 21.4 MB (35.97%)
+        """
+        if len(grid) == 0: return 0
+        # initialize
+        self.m, self.n = len(grid), len(grid[0])
+        self.grid = grid
+        self.visited = set()
+        island = 0
+        # dfs
+        for i in range(self.m):
+            for j in range(self.n):
+                # do dfs when not visited and value is 1
+                if self.grid[i][j] == '1' and f'{i},{j}' not in self.visited:
+                    self.dfs(i, j)
+                    island += 1
+        return island
+
+    def dfs(self, x, y):
+        if x < 0 or x >= self.m or y < 0 or y >= self.n or self.grid[x][y] != '1' or f'{x},{y}' in self.visited:
+            return
+        self.visited.add(f'{x},{y}')
+        self.dfs(x+1, y)
+        self.dfs(x-1, y)
+        self.dfs(x, y+1)
+        self.dfs(x, y-1)
+
+
 grid = [
     ["1","1","1","1","0"],
     ["1","1","0","1","0"],
     ["1","1","0","0","0"],
     ["0","0","0","0","0"]]
-a = Solution()
+a = BFSSolution()
 print(a.numIslands(grid))
