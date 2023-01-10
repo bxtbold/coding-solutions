@@ -6,22 +6,21 @@ class Solution:
         """
         if '0000' in deadends: return -1
         # initialize
-        queue, self.visited = ['0000'], {'0000' : 1}
+        queue, visited = ['0000'], {'0000'}
         step = 0
         # bfs
         while len(queue) != 0:
-            for i in range(len(queue)):
-                cur = queue[0]
+            for _ in range(len(queue)):
+                cur = queue.pop(0)
                 if cur == target:
                     return step
                 neighbors = self.get_neighbors(cur)
                 # iterate through all neighbors
                 for j in neighbors:
-                    if j in self.visited or j in deadends:
+                    if j in visited or j in deadends:
                         continue
                     queue.append(j)
-                    self.visited[j] = 1
-                queue.pop(0)
+                    visited.add(j)
             step += 1
         return -1
 

@@ -1,39 +1,28 @@
 class Solution:
     def floodFill(self, image, sr, sc, color):
         """
-        DFS
-        RUNTIME: 116 ms (67.40%)
-        MEMORY: 14 MB (89.90%)
+        RUNTIME: 72 ms (96.89%)
+        MEMORY: 14.1 MB (14.1%)
         """
-
         self.image = image
-        self.sr = sr
-        self.sc = sc
-        self.color = color
-        self.color2change = image[sr][sc]
         self.row, self.column = len(image), len(image[0])
-
         # DFS
-        self.dfs(sr, sc)
-
+        self.dfs(sr, sc, color, image[sr][sc])
         return self.image
 
-    def dfs(self, r, c):
-
-        # check depth
-        if r < 0 or r > self.row - 1: return
-        if c < 0 or c > self.column - 1: return
-        if self.image[r][c] == self.color or \
-            self.image[r][c] != self.color2change: return
-
+    def dfs(self, r, c, color, color2change):
+        if r < 0 or r > self.row - 1 or \
+           c < 0 or c > self.column - 1 or \
+           self.image[r][c] == color or \
+           self.image[r][c] != color2change:
+            return
         # change color
-        self.image[r][c] = self.color
-
+        self.image[r][c] = color
         # radiate in four directions
-        self.dfs(r + 1, c)
-        self.dfs(r - 1, c)
-        self.dfs(r, c + 1)
-        self.dfs(r, c - 1)
+        self.dfs(r + 1, c, color, color2change)
+        self.dfs(r - 1, c, color, color2change)
+        self.dfs(r, c + 1, color, color2change)
+        self.dfs(r, c - 1, color, color2change)
 
 
 sol = Solution()

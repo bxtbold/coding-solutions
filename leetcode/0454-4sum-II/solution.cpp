@@ -9,10 +9,8 @@ public:
         int total = 0;
         for (int i=0; i < nums1.size(); i++ ) {
             for (int j=0; j < nums1.size(); j++ ) {
-                int tmp1 = nums1[i] + nums2[j];
-                int tmp2 = nums3[i] + nums4[j];
-                ++sum1[tmp1];
-                ++sum2[tmp2];
+                ++sum1[nums1[i] + nums2[j]];
+                ++sum2[nums3[i] + nums4[j]];
             }
         }
         for (auto i : sum1) {
