@@ -2,16 +2,18 @@ import collections
 class Solution:
     def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
         """
-        RUNTIME: 656 ms (96.79%)
-        MEMORY: 50.9 MB (64.10%)
+        RUNTIME: 665 ms (96.18%)
+        MEMORY: 50.7 MB (80.25%)
         """
         if sum(hasApple) == 0: return 0
         # dfs
-        def dfs(node: int, prev: int) -> bool:
-            for neighbor in graph[node]:
-                if neighbor != prev and dfs(neighbor, node):
-                    hasApple[node] = True
-            return hasApple[node]
+        def dfs(current: int, parent: int) -> bool:
+            for child in graph[current]:
+                if child == parent:
+                    continue
+                if dfs(child, current):
+                    hasApple[current] = True
+            return hasApple[current]
         # graph
         graph = collections.defaultdict(list)
         for u, v in edges:
